@@ -33,6 +33,7 @@
 					{{csrf_field()}}
 					<button type="submit" class="btn btn-primary" name='submit'>Submit</button>
 					<button type="button" class="btn btn-primary" id="reset" name='reset'>reset</button>
+					<button type="button" class="btn btn-primary" id="del-input" name='del'>xóa</button>
 				</form>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
@@ -55,6 +56,14 @@
 					$("#preview").append("<img class='box-preview-img img-"+i+"'/>");
 				}else{
 					alert('Số ảnh cần upload đã quá nhiều');
+				}
+			});
+
+			$("#del-input").click(function (){
+				if($("#divUpload input").length>1){
+					var i = $("#divUpload input").length;
+					$("#divUpload .upload-"+i).remove();
+					$("#preview .img-"+i).remove();
 				}
 			});
 			//phải sự dụng delagate để bát sự kiện live, khi input upload được tạo ra khi thêm input bằng jquery
